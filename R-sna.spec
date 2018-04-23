@@ -4,7 +4,7 @@
 #
 Name     : R-sna
 Version  : 2.4
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/sna_2.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sna_2.4.tar.gz
 Summary  : Tools for Social Network Analysis
