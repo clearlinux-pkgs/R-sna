@@ -4,20 +4,24 @@
 #
 Name     : R-sna
 Version  : 2.4
-Release  : 14
+Release  : 15
 URL      : https://cran.r-project.org/src/contrib/sna_2.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sna_2.4.tar.gz
 Summary  : Tools for Social Network Analysis
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+
-Requires: R-sna-lib
+Requires: R-sna-lib = %{version}-%{release}
+Requires: R-coda
 Requires: R-network
 Requires: R-rgl
 Requires: R-statnet.common
+Requires: R-tibble
+BuildRequires : R-coda
 BuildRequires : R-network
 BuildRequires : R-rgl
 BuildRequires : R-statnet.common
-BuildRequires : clr-R-helpers
+BuildRequires : R-tibble
+BuildRequires : buildreq-R
 
 %description
 No detailed description available
@@ -38,11 +42,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1521231924
+export SOURCE_DATE_EPOCH=1552850730
 
 %install
+export SOURCE_DATE_EPOCH=1552850730
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1521231924
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -77,8 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library sna|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  sna || :
 
 
 %files
@@ -104,7 +107,6 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/sna/help/sna.rdx
 /usr/lib64/R/library/sna/html/00Index.html
 /usr/lib64/R/library/sna/html/R.css
-/usr/lib64/R/library/sna/libs/symbols.rds
 
 %files lib
 %defattr(-,root,root,-)
