@@ -4,24 +4,19 @@
 #
 Name     : R-sna
 Version  : 2.4
-Release  : 21
+Release  : 22
 URL      : https://cran.r-project.org/src/contrib/sna_2.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sna_2.4.tar.gz
 Summary  : Tools for Social Network Analysis
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+
 Requires: R-sna-lib = %{version}-%{release}
-Requires: R-pillar
-Requires: R-pkgconfig
-Requires: R-rlang
-BuildRequires : R-coda
+Requires: R-network
+Requires: R-rgl
+Requires: R-statnet.common
 BuildRequires : R-network
-BuildRequires : R-pillar
-BuildRequires : R-pkgconfig
 BuildRequires : R-rgl
-BuildRequires : R-rlang
 BuildRequires : R-statnet.common
-BuildRequires : R-tibble
 BuildRequires : buildreq-R
 
 %description
@@ -42,13 +37,13 @@ lib components for the R-sna package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552940357
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569374794
 
 %install
-export SOURCE_DATE_EPOCH=1552940357
+export SOURCE_DATE_EPOCH=1569374794
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -77,12 +72,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  sna || :
+R CMD check --no-manual --no-examples --no-codoc sna || :
 
 
 %files
