@@ -4,7 +4,7 @@
 #
 Name     : R-sna
 Version  : 2.6
-Release  : 28
+Release  : 29
 URL      : https://cran.r-project.org/src/contrib/sna_2.6.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sna_2.6.tar.gz
 Summary  : Tools for Social Network Analysis
