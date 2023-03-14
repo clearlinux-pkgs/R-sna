@@ -4,7 +4,7 @@
 #
 Name     : R-sna
 Version  : 2.7.1
-Release  : 47
+Release  : 48
 URL      : https://cran.r-project.org/src/contrib/sna_2.7-1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/sna_2.7-1.tar.gz
 Summary  : Tools for Social Network Analysis
@@ -17,9 +17,6 @@ Requires: R-statnet.common
 BuildRequires : R-network
 BuildRequires : R-statnet.common
 BuildRequires : buildreq-R
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 No detailed description available
@@ -50,10 +47,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1674579080
+export SOURCE_DATE_EPOCH=1678832730
 
 %install
-export SOURCE_DATE_EPOCH=1674579080
+export SOURCE_DATE_EPOCH=1678832730
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-sna
 cp %{_builddir}/sna/COPYING %{buildroot}/usr/share/package-licenses/R-sna/2c4c203a956f9c8235dd0a698f6cdac4ab435290 || :
